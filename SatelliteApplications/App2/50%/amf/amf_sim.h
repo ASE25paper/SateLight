@@ -4,8 +4,6 @@
 
 #include "../common/common_defs.h"
 
-// MAX_AMF_UES 和 MAX_PDU_SESSIONS_PER_UE 现在从 common_defs.h 获取
-
 
 typedef enum {
     AMF_UE_STATE_DEREGISTERED,
@@ -26,7 +24,7 @@ typedef struct {
     struct {
         pdu_session_id_t id;
         bool active;
-        // teid_t n2_sm_info_upf_teid; // 可选: AMF存储从SMF获取的N2 SM Info
+        // teid_t n2_sm_info_upf_teid;
         // char n2_sm_info_ue_ip[MAX_UE_IP_ADDR_LEN];
     } pdu_sessions[MAX_PDU_SESSIONS_PER_UE];
     int active_pdu_session_count;

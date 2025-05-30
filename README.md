@@ -1,1 +1,1 @@
-# SateLight
+# SateLight: A Satellite Application Update Framework for Satellite Computing

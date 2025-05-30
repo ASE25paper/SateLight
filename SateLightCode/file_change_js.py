@@ -52,7 +52,6 @@ def get_add_list_js_target(total_num, next_num_start, space_num):
         choice = random.randint(0, 2)
         indent_str = ' ' * space_num
 
-        # 生成一个足够长的随机字母字符串
         random_chars = ''.join(random.choice('abcdefghijklmnopqrstuvwxyz') for _ in range(TARGET_LINE_LENGTH))
 
         if choice == 0:  # Insert a JS comment

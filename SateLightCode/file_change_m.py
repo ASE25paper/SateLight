@@ -55,7 +55,6 @@ def get_add_list_m_target(total_num, next_num_start, space_num):
         indent_str = ' ' * space_num
         matlab_comment_char = '%'
 
-        # 生成足够长的随机字母填充字符串
         random_chars = ''.join(random.choice('abcdefghijklmnopqrstuvwxyz') for _ in range(TARGET_LINE_LENGTH))
 
         if choice == 0:  # Insert a MATLAB comment

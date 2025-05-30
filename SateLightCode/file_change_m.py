@@ -55,6 +55,7 @@ def get_add_list_m_target(total_num, next_num_start, space_num):
         indent_str = ' ' * space_num
         matlab_comment_char = '%'
 
+
         random_chars = ''.join(random.choice('abcdefghijklmnopqrstuvwxyz') for _ in range(TARGET_LINE_LENGTH))
 
         if choice == 0:  # Insert a MATLAB comment
@@ -202,49 +203,49 @@ def delete_lines_m_target(file_path, num_deletes_target):
 
 def file_change_m_target(file_path, num_changes):
     try:
-        print(f"开始处理文件: {file_path}")
+        print(f"file start:: {file_path}")
 
-        # 检查文件是否存在且可写
+        
         if not os.path.exists(file_path):
-            print(f"错误: 文件不存在: {file_path}")
+            print(f"error, no file: {file_path}")
             return 0, 0
 
         if not os.access(file_path, os.W_OK):
-            print(f"错误: 文件无写入权限: {file_path}")
+            print(f"error: {file_path}")
             return 0, 0
 
         half_num_changes = num_changes // 2
         num_can_delete = get_num_can_be_deleted_lines(file_path)
         lines_to_delete = min(num_can_delete, half_num_changes)
 
-        print(f"计划修改总行数: {num_changes}")
-        print(f"可删除行数: {num_can_delete}")
-        print(f"将删除行数: {lines_to_delete}")
+        print(f"line: {num_changes}")
+        print(f"detele: {num_can_delete}")
+        print(f"will detele: {lines_to_delete}")
 
         if lines_to_delete > 0:
             try:
                 delete_lines_m_target(file_path, lines_to_delete)
-                print(f"已完成删除 {lines_to_delete} 行")
+                print(f" {lines_to_delete} ")
             except Exception as e:
-                print(f"删除行时出错: {str(e)}")
+                print(f": {str(e)}")
                 lines_to_delete = 0
 
         lines_to_insert = num_changes - lines_to_delete
-        print(f"将插入行数: {lines_to_insert}")
+        print(f": {lines_to_insert}")
 
         if lines_to_insert > 0:
             try:
                 insert_harmless_code_m_target(file_path, lines_to_insert)
-                print(f"已完成插入 {lines_to_insert} 行")
+                print(f" {lines_to_insert} 行")
             except Exception as e:
-                print(f"插入行时出错: {str(e)}")
+                print(f": {str(e)}")
                 lines_to_insert = 0
 
-        print(f"文件修改完成: {file_path}")
+        print(f": {file_path}")
         return lines_to_delete, lines_to_insert
 
     except Exception as e:
-        print(f"处理文件时发生错误: {str(e)}")
+        print(f": {str(e)}")
         return 0, 0
 
 

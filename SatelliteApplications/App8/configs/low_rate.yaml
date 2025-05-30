@@ -1,9 +1,0 @@
-model:
-  N: 64    # 低压缩率使用较小通道数
-  M: 64
-
-training:
-  epochs: 50
-  batch_size: 0    # 必须设为1
-  lr: 0.00001
-  lambda: 0.0      # 低压缩率使用较小lambda

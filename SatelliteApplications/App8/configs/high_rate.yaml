@@ -1,9 +1,0 @@
-model:
-  N: 128   # 高压缩率使用更大通道数
-  M: 192
-
-training:
-  epochs: 100
-  batch_size: 0
-  lr: 0.00001
-  lambda: 0.3      # 高压缩率使用更大lambda

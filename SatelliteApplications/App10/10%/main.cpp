@@ -17,7 +17,7 @@ std::string currentImagePath = "../images/current_capture.tif";
 
     std::cout << "--- EAREH+ SIMULATOR ---" << std::endl;
 
-    // 0. 加载图像
+    
     std::cout << "\nStep 0: Loading Images" << std::endl;
     cv::Mat refImage = loadImageGDAL(refImagePath);
     cv::Mat currentImage = loadImageGDAL(currentImagePath);
@@ -26,20 +26,19 @@ std::string currentImagePath = "../images/current_capture.tif";
         std::cerr << "Failed to load one or both images. Exiting." << std::endl;
         return -1;
     }
-    // 确保图像具有相同的通道数和位深度以进行比较
+    
     if (refImage.channels() != currentImage.channels() || refImage.depth() != currentImage.depth()) {
         std::cerr << "Warning: Reference and current image have different channel counts or depth." << std::endl;
-        //  可以尝试转换，但如果原始数据差异过大，后续处理意义不大
+        
         // For simplicity, we'll proceed but this should be handled robustly
     }
-    // 确保类型兼容，如果一个是8U，一个是16U，后续计算会有问题
-    // 这里假设 loadImageGDAL 已经尽可能处理了或用户提供了兼容的图像
+    
 
 
-    // 1. 云剔除 (针对当前捕获的图像)
+    
     std::cout << "\nStep 1: Cloud Removal (Simplified)" << std::endl;
     cv::Mat currentCloudMask = detectCloudsSimple(currentImage);
-    if (currentCloudMask.empty() && !currentImage.empty()) { // 如果检测失败但图像有效，创建一个全非云掩码
+    if (currentCloudMask.empty() && !currentImage.empty()) { 
         std::cout << "Cloud detection failed, assuming no clouds for current image." << std::endl;
         currentCloudMask = cv::Mat::zeros(currentImage.size(), CV_8UC1);
     }

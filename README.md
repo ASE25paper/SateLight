@@ -25,7 +25,7 @@
  ## Satellite Application Update Framework Code
 
 ![alt text](image.png)
- 
+
  SateLight implements an application update framework for satellite-ground systems through two core components, located in the `SateLightCode/` directory.
  - The Application Upload Component, deployed on the ground, is responsible for performing content-aware differential analysis between the updated and original containerized application versions (Step 1). It identifies semantic changes and encodes them into an expressive metadata representation (Step 2). 
     - The main implementation is provided in the file `write_diff.py` and `myers.py`.
@@ -36,3 +36,6 @@
     - We provide a script to quantify the extent of code modifications between two versions of a satellite application. (`get_change_rate.py`)
 
 
+## Real-world Satellite Deployment Code
+
+- We provide the related code used to deploy a real-world satellite case, available in the `RealWorldDeployment/` directory.
